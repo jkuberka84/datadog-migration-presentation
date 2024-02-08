@@ -23,3 +23,19 @@ echo
 echo "db host is $wpdbhost"
 
 mysqldump --default-character-set=utf8mb4 -u "$wpdbuser" -p"$wpdbpass"  "$wpdbname" > wp-database-backup-8317.sql
+
+#Breakout SSH string into variables
+
+echo "Enter SSH Command"
+read sshcommand
+
+ssh_user=$(echo "$sshcommand" | awk '{print $2}' | cut -d "@" -f 1)
+ssh_host=$(echo "$sshcommand" | awk '{print $2}' | cut -d "@" -f 2)
+ssh_port=$(echo "$sshcommand" | awk '/-p/{print $(NF)}')
+
+echo "ssh_user is $ssh_user"
+echo "ssh_host is $ssh_host"
+echo "ssh_port is $ssh_port"
+
+
+rsync -avz ./ ssh_user@ssh_host:~/home/public/
