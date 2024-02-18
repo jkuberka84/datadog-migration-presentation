@@ -1,4 +1,4 @@
-# This script is for exporting/transferring the files, and database of a WordPress site.
+# This script is for exporting/transferring the files, and database of a WordPress site. Paths are setup for kinsta.
 # Started Febuary 6th, 2024 by Jason Kuberka
 
 Put WordPress database credentials into variables
