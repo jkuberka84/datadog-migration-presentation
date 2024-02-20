@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Retrieve the site URL
+site_url=$(wp option get siteurl | sed 's~^https\?://~~')
+
+# Define the JSON payload with the site URL variable
+json_slackmessage="{\"text\":\"<!here> The file transfer for $site_url is complete!\"}"
+
+# Send Slack Message Using curl with the JSON payload
+curl -X POST -H 'Content-type: application/json' --data "$json_slackmessage" https://hooks.slack.com/services/$enter-key-url-here
